@@ -1,6 +1,7 @@
 import os
 import re
 import tiktoken
+import wandb
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -65,6 +66,13 @@ def train_val_split(df, target, test_size=0.2):
 
 def encode_texts(text):
     text_ids = enc.encode_ordinary(text)
-    #text_ids = np.array(text_ids, dtype=np.uint16)  # TODO: check data type
+    #text_ids = np.array(text_ids, dtype=np.int32)  # TODO: check data type
 
     return text_ids
+
+
+def save_dataset(df, split):
+    table = wandb.Table(dataframe=df)
+    wandb.log({split: table})
+
+    df.to_csv(os.path.join(os.path.dirname(__file__), f"../final/{split}_final.csv"), index=False)

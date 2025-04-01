@@ -174,3 +174,6 @@ cython_debug/
 .pypirc
 
 notebooks/wandb/
+/data/final/test_final.csv
+/data/final/train_final.csv
+/data/final/val_final.csv
