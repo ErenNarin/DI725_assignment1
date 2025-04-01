@@ -75,4 +75,4 @@ def save_dataset(df, split):
     table = wandb.Table(dataframe=df)
     wandb.log({split: table})
 
-    df.to_csv(os.path.join(os.path.dirname(__file__), f"../final/{split}_final.csv"), index=False)
+    df.to_csv(os.path.join(os.path.dirname(__file__), f"../final/{split}.csv"), index=False)
