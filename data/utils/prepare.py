@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 train_file = os.path.join(os.path.dirname(__file__), '../train.csv')
 test_file = os.path.join(os.path.dirname(__file__), '../test.csv')
 
-labels = {"neutral": 0, "positive": 1, "negative": 2}
+labels = {"neutral": [1, 0, 0], "positive": [0, 1, 0], "negative": [0, 0, 1]}
 enc = tiktoken.get_encoding("gpt2")
 
 
@@ -18,11 +18,6 @@ def load_reduced_data(features, target):
 
     df_train = pd.read_csv(train_file)[features]
     df_test = pd.read_csv(test_file)[features]
-
-    print("Train Dataset Info:")
-    df_train.info()
-    print("\nTest Dataset Info:")
-    df_test.info()
 
     return df_train, df_test
 
@@ -34,12 +29,10 @@ def split_data(df, target, test_size=0.2):
     return df_train, df_val
 
 
-def encode_labels(df, target):
-    df_new = df.copy()
-    df_new[target] = df_new[target].map(labels)
-    df_new[target] = np.array(df_new[target], dtype=np.uint8)
+def encode_labels(label):
+    encoded_label = labels[label]
 
-    return df_new
+    return np.array(encoded_label, dtype=np.uint8)
 
 
 def remove_redundant_lines(text):
@@ -66,13 +59,13 @@ def train_val_split(df, target, test_size=0.2):
 
 def encode_texts(text):
     text_ids = enc.encode_ordinary(text)
-    #text_ids = np.array(text_ids, dtype=np.int32)  # TODO: check data type
+    text_ids = np.array(text_ids, dtype=np.uint16)
 
     return text_ids
 
 
 def save_dataset(df, split):
-    table = wandb.Table(dataframe=df)
-    wandb.log({split: table})
+    #table = wandb.Table(dataframe=df)
+    #wandb.log({split: table})
 
     df.to_csv(os.path.join(os.path.dirname(__file__), f"../final/{split}.csv"), index=False)
