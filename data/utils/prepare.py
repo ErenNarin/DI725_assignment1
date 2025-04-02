@@ -58,8 +58,8 @@ def train_val_split(df, target, test_size=0.2):
     return df_train, df_val
 
 
-def tokenize_function(examples):
-    return tokenizer(examples["text"], padding="max_length", truncation=True)
+def tokenize_function(examples, max_length=1024):
+    return tokenizer(examples["text"], padding="max_length", truncation=True, max_length=max_length)
 
 
 def save_dataset(df, split):

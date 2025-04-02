@@ -180,3 +180,4 @@ notebooks/wandb/
 /data/final/val.csv
 /data/final/train-val.hf
 /notebooks/results/
+/models/4_gpt2_sentiment_model.pkl
