@@ -181,3 +181,4 @@ notebooks/wandb/
 /data/final/train-val.hf
 /notebooks/results/
 /models/4_gpt2_sentiment_model.pkl
+/models/3_nanoGPT_sentiment_model.pt
