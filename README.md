@@ -6,29 +6,37 @@ In this work, the main aim is to analyze customer service conversations from an 
 
 There are four steps of this project and there are separate jupyter notebooks files and W&B projects for all steps:
 
-1 - Exploratory Data Analysis
+### 1 - Exploratory Data Analysis
 
 Notebook: [1_eda.jpynb](1_eda.jpynb)
 
 W&B Project: [DI725_assignment_1_2389088_eda](https://wandb.ai/erennarin-92-metu-middle-east-technical-university/DI725_assignment_1_2389088_eda)
 
-2 - Preprocessing Data
+### 2 - Preprocessing Data
 
 Notebook: [2_preprocess.jpynb](2_preprocess.jpynb)
 
 W&B Project: [DI725_assignment_1_2389088_preprocess](https://wandb.ai/erennarin-92-metu-middle-east-technical-university/DI725_assignment_1_2389088_preprocessing)
 
-3 - Training a Sentiment Classifier Model From Scratcg with nanoGPT Architecture
+### 3 - Training a Sentiment Classifier Model From Scratcg with nanoGPT Architecture
 
 Notebook: [3_nanoGPT_sentiment_model.jpynb](3_nanoGPT_sentiment_model.jpynb)
 
 W&B Project: [DI725_assignment_1_2389088_from_scratch](https://wandb.ai/erennarin-92-metu-middle-east-technical-university/DI725_assignment_1_2389088_from_scratch)
 
 
-4 - Fine-Tuning GPT2 for Sentiment Classification 
+### 4 - Fine-Tuning GPT2 for Sentiment Classification 
 
 Notebook: [4_gpt2_sentiment_model.jpynb](4_gpt2_sentiment_model.jpynb)
 
 W&B Project: [DI725_assignment_1_2389088_fine_tune](https://wandb.ai/erennarin-92-metu-middle-east-technical-university/DI725_assignment_1_2389088_fine_tune)
+
+> **_NOTE:_** Before executing notebook files, the following installation commands should be executed to prepare work environment.
+> 
+> ```console
+> pip install torch numpy transformers datasets tiktoken wandb tqdm matplotlib seaborn scipy scikit-learn
+> pip install accelerate
+> pip install transformers torch -U
+> ```
 
 > **_NOTE:_** [4_gpt2_sentiment_model.jpynb](4_gpt2_sentiment_model.jpynb) needs prepared data to be executed. Because of that, [2_preprocess.jpynb](2_preprocess.jpynb) should be executed completely before executing this one.
